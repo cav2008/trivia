@@ -1,11 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import Button from "../../common/Button";
 
 const Home = (): React.ReactElement => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <h1>Trivia Game</h1>
-      <Link to="/game">Play</Link>
+      <Button label="Play game" onClick={() => navigate('/game')} />
     </div>
   );
 };

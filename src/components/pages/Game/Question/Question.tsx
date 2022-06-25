@@ -1,27 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { QuestionProps } from "./Question.types";
+
+import { RootState } from "../../../../store/index";
+import { setUserAnswers } from "../../../../store/game/actions";
+
 import Option from "./Option";
 
 const Question = ({
   question,
   options,
-  answers,
 }: QuestionProps): React.ReactElement => {
-  const [userAnswers, setUserAnswers] = useState<string[]>([]);
+  const dispatch = useDispatch();
+  const userAnswers = useSelector((state: RootState) => state.game.userAnswers);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
     if (userAnswers.includes(value)) {
-      setUserAnswers((userAnswers) =>
-        userAnswers.filter((answer) => answer !== value)
+      const removedAnswers = userAnswers.filter(
+        (answer: string) => answer !== value
       );
+      dispatch(setUserAnswers(removedAnswers));
     } else {
-      setUserAnswers((userAnswers) => [...userAnswers, value]);
+      dispatch(setUserAnswers([...userAnswers, value]));
     }
   };
-
-  console.log(userAnswers);
 
   return (
     <div>
