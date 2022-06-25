@@ -1,0 +1,112 @@
+[
+  {
+    "question": "If you have 10 mangos and another person gives you 12 more, how many mangos will you have in total?",
+    "options": [
+      {
+        "id": "a",
+        "value": "1 mango"
+      },
+      {
+        "id": "b",
+        "value": "2 mangos"
+      },
+      {
+        "id": "c",
+        "value": "10 mangos"
+      },
+      {
+        "id": "d",
+        "value": "22 mangos"
+      }
+    ],
+    "answers": ["d"]
+  },
+  {
+    "question": "If a train is supposed to reach the station at 4:10 am. but it is 35 minutes late, at what time will the train reach the station?",
+    "options": [
+      {
+        "id": "a",
+        "value": "4:45 am"
+      },
+      {
+        "id": "b",
+        "value": "3:00 am"
+      },
+      {
+        "id": "c",
+        "value": "4:45 pm"
+      },
+      {
+        "id": "d",
+        "value": "6:00 pm"
+      }
+    ],
+    "answers": ["a"]
+  },
+  {
+    "question": "Which of these animals can fly?",
+    "options": [
+      {
+        "id": "a",
+        "value": "Cats"
+      },
+      {
+        "id": "b",
+        "value": "Bats"
+      },
+      {
+        "id": "c",
+        "value": "Birds"
+      },
+      {
+        "id": "d",
+        "value": "Worms"
+      }
+    ],
+    "answers": ["b", "c"]
+  },
+  {
+    "question": "Which of the following is a list of colors?",
+    "options": [
+      {
+        "id": "a",
+        "value": "Dog, cat, fish"
+      },
+      {
+        "id": "b",
+        "value": "Earth, Mars, Venus, Saturn, Mercury, Jupiter, Neptune, Uranus"
+      },
+      {
+        "id": "c",
+        "value": "Guitar, drums, piano, harmonica, tambourine, trumpet"
+      },
+      {
+        "id": "d",
+        "value": "Red, orange, yellow, green, blue, indigo, violet"
+      }
+    ],
+    "answers": ["d"]
+  },
+  {
+    "question": "If you are reading a book and are on page 374, what will the number of the next page be?",
+    "options": [
+      {
+        "id": "a",
+        "value": "375"
+      },
+      {
+        "id": "b",
+        "value": "373"
+      },
+      {
+        "id": "c",
+        "value": "474"
+      },
+      {
+        "id": "d",
+        "value": "400"
+      }
+    ],
+    "answers": ["a"]
+  }
+]
