@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import useFetch from "../../../hooks/api/useFetch";
 import { RootState } from "../../../store/index";
 import {
   setQuestions,
@@ -38,27 +39,13 @@ const Game = (): React.ReactElement => {
     (state: RootState) => state.game
   );
   const [isAnswered, setIsAnswered] = useState(false);
+  const [isLoading, apiData] = useFetch("data/questions.json");
 
   useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await fetch("data/questions.json");
+    dispatch(setQuestions(apiData));
+  }, [apiData])
 
-        if (!response.ok) {
-          throw new Error();
-        }
-
-        const data = await response.json();
-        dispatch(setQuestions(data));
-      } catch (error) {
-        console.log("Could not fetch data");
-      }
-    };
-
-    fetchQuestions();
-  }, []);
-
-  if (!questions.length) return <h2>loading questions</h2>;
+  if (isLoading) return <h2>Loading...</h2>;
 
   const { question, options, answers } = questions[currentQuestionIndex];
   const isAnswerCorrect = getIsAnswersCorrect(userAnswers, answers);

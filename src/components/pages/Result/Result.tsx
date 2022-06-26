@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import useFetch from "../../../hooks/api/useFetch";
 import { RootState } from "../../../store/index";
 import { resetGame } from "../../../store/game/actions";
 
@@ -9,20 +10,29 @@ import Button from "../../common/Button";
 
 import "./Result.scss";
 
-const getResultMessage = (score: number, numberOfQuestions: number): string => {
+const getRandomNumber = (max: number) => {
+  return Math.floor(Math.random() * max) + 1
+}
+
+const getResultMessage = (
+  score: number,
+  numberOfQuestions: number
+): { message: string; rank: string } => {
   const percentage = score / numberOfQuestions;
 
-  if (percentage >= 0.7) return "You're a Trivia master!";
-  if (percentage < 0.4) return "Try again, Trivia newbie!";
+  if (percentage >= 0.7)
+    return { message: "You're a Trivia master!", rank: "master" };
+  if (percentage < 0.4)
+    return { message: "Try again, Trivia newbie!", rank: "loser" };
 
-  return "Nice score!";
+  return { message: "Nice score!", rank: "good-job" };
 };
 
 const getHighScore = () => {
   return {
     highScore: localStorage.getItem("highScore") || 0,
     numberOfQuestions: localStorage.getItem("numberOfQuestions") || 0,
-    date: localStorage.getItem("date") || '',
+    date: localStorage.getItem("date") || "",
   };
 };
 
@@ -42,6 +52,10 @@ const Result = (): React.ReactElement => {
   const dispatch = useDispatch();
   const questions = useSelector((state: RootState) => state.game.questions);
   const score = useSelector((state: RootState) => state.game.score);
+  const { message, rank } = getResultMessage(score, questions.length);
+  const [isLoading, apiData] = useFetch(
+    `https://api.giphy.com/v1/gifs/search?api_key=b6knmEeweEtd9H7LlAUA1F8I0F9Y4zn0&q=${rank}&limit=25&offset=0&rating=r&lang=en`
+  );
 
   useEffect(() => {
     const isHighScore = getIsHighScore(score);
@@ -58,18 +72,23 @@ const Result = (): React.ReactElement => {
 
   const { highScore, numberOfQuestions, date } = getHighScore();
 
+  if (isLoading) return <h2>Loading...</h2>;
+
   return (
     <div className="result">
-      <h2 className="result_title">
-        {getResultMessage(score, questions.length)}
-      </h2>
+      <img
+        className="result_image"
+        src={apiData.data[getRandomNumber(10)].images.downsized_medium.url}
+        alt={`${rank} gif`}
+      />
+      <h2 className="result_title">{message}</h2>
       <p>
         You got {score} out of {questions.length} questions right!
       </p>
       {highScore ? (
         <p>
           {`Your best score so far was ${highScore} out of ${numberOfQuestions} questions which you got on
-        ${new Date(date).toLocaleDateString('en-US')}.`}
+        ${new Date(date).toLocaleDateString("en-US")}.`}
         </p>
       ) : (
         <p>No high score yet.</p>
