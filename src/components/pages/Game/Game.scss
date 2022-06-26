@@ -1,0 +1,27 @@
+.game {
+  text-align: center;
+  font-size: 21px;
+}
+
+.game_header {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+}
+
+.game_headerScore {
+  justify-self: end;
+}
+
+.game_message {
+  min-height: 50px;
+  font-weight: bold;
+}
+
+.game_message__correct {
+  color: green;
+}
+
+.game_message__incorrect {
+  color: red;
+}

@@ -1,0 +1,26 @@
+.button {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 1px gray;
+  }
+
+  &:disabled {
+    box-shadow: none;
+    cursor: default;
+    opacity: 0.7;
+  }
+}
+
+.button__primary {
+  background-color: aqua;
+}
+
+.button__secondary {
+  color: white;
+  background-color: #065fb1;
+}

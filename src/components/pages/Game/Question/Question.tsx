@@ -7,10 +7,9 @@ import { setUserAnswers } from "../../../../store/game/actions";
 
 import Option from "./Option";
 
-const Question = ({
-  question,
-  options,
-}: QuestionProps): React.ReactElement => {
+import "./Question.scss";
+
+const Question = ({ question, options }: QuestionProps): React.ReactElement => {
   const dispatch = useDispatch();
   const userAnswers = useSelector((state: RootState) => state.game.userAnswers);
 
@@ -28,20 +27,22 @@ const Question = ({
   };
 
   return (
-    <div>
-      <p>{question}</p>
-      {options.length
-        ? options.map(({ id, value }) => (
-            <Option
-              key={id}
-              id={id}
-              value={value}
-              isChecked={userAnswers.includes(id)}
-              onChange={onChangeHandler}
-            />
-          ))
-        : null}
-    </div>
+    <>
+      <p className="question_title">{question}</p>
+      <div className="question">
+        {options.length
+          ? options.map(({ id, value }) => (
+              <Option
+                key={id}
+                id={id}
+                value={value}
+                isChecked={userAnswers.includes(id)}
+                onChange={onChangeHandler}
+              />
+            ))
+          : null}
+      </div>
+    </>
   );
 };
 
