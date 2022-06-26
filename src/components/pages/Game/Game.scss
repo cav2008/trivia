@@ -5,8 +5,12 @@
 
 .game_header {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
+  font-size: 16px;
+
+  @media screen and (min-width: 480px) {
+    font-size: 21px;
+  }
 }
 
 .game_headerScore {
