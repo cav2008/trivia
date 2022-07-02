@@ -72,10 +72,10 @@ const Game = (): React.ReactElement => {
       <Card>
         <>
           <div className="game_header">
-            <h2>
+            <h2 className="game_title">
               Question {currentQuestionIndex + 1} of {questions.length}
             </h2>
-            <h2 className="game_headerScore">Score: {score}</h2>
+            <h2 className="game_title game_title__right">Score: {score}</h2>
           </div>
           <Question question={question} options={options} answers={answers} />
           <div className="game_message">

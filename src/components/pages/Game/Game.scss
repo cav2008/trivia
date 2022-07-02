@@ -6,14 +6,17 @@
 .game_header {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  font-size: 16px;
+}
+
+.game_title {
+  font-size: 18px;
 
   @media screen and (min-width: 480px) {
-    font-size: 21px;
+    font-size: 32px;
   }
 }
 
-.game_headerScore {
+.game_title__right {
   justify-self: end;
 }
 

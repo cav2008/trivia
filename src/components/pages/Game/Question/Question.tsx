@@ -14,8 +14,6 @@ const Question = ({
   options,
   answers,
 }: QuestionProps): React.ReactElement => {
-  const userAnswers = useSelector((state: RootState) => state.game.userAnswers);
-
   return (
     <>
       <p className="question_title">{question}</p>
