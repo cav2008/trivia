@@ -1,8 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { QuestionProps } from "./Question.types";
-
-import { RootState } from "../../../../store/index";
 
 import CheckboxGroup from "./CheckboxGroup";
 import RadioGroup from "./RadioGroup";
