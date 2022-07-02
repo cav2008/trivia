@@ -1,10 +1,11 @@
 /* Customize the label (the container) */
-.option {
+.checkbox {
   display: block;
   position: relative;
   padding-left: 35px;
   cursor: pointer;
   font-size: 21px;
+  line-height: 26px;
 
   &:focus-visible {
     outline: -webkit-focus-ring-color auto 1px;
@@ -12,16 +13,17 @@
 }
 
 /* Hide the browser's default radio button */
-.option input {
+.checkbox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
+
 }
 
 /* Create a custom radio button */
-.option_checkmark {
+.checkbox_checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -29,37 +31,37 @@
   width: 24px;
   background-color: transparent;
   border: 1px solid gray;
-  border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
-.option:hover .option_checkmark {
+.checkbox:hover .checkbox_checkmark {
   background-color: #ccc;
 }
 
 /* When the radio button is checked, add a white background */
-.option input:checked ~ .option_checkmark {
-  background-color: white;
+.checkbox input:checked ~ .checkbox_checkmark {
+  background-color: #065fb1;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-.option_checkmark:after {
+.checkbox_checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
 /* Show the indicator (dot/circle) when checked */
-.option input:checked ~ .option_checkmark:after {
+.checkbox input:checked ~ .checkbox_checkmark:after {
   display: block;
 }
 
 /* Style the indicator (dot/circle) */
-.option_checkmark:after {
-  top: 6px;
-  left: 6px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #065fb1;
+.checkbox_checkmark:after {
+  left: 9px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }

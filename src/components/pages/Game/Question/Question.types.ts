@@ -1,6 +1,10 @@
-import { OptionProps } from "./Option/Option.types";
+export type Option = {
+  id: string;
+  value: string;
+}
 
 export interface QuestionProps {
   question: string;
-  options: OptionProps[];
+  options: Option[];
+  answers: string[];
 }

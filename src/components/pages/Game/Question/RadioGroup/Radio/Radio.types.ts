@@ -1,4 +1,4 @@
-export interface OptionProps {
+export interface RadioProps {
   id: string;
   value: string;
   isChecked: boolean;

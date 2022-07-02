@@ -1,46 +1,30 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { QuestionProps } from "./Question.types";
 
 import { RootState } from "../../../../store/index";
-import { setUserAnswers } from "../../../../store/game/actions";
 
-import Option from "./Option";
+import CheckboxGroup from "./CheckboxGroup";
+import RadioGroup from "./RadioGroup";
 
 import "./Question.scss";
 
-const Question = ({ question, options }: QuestionProps): React.ReactElement => {
-  const dispatch = useDispatch();
+const Question = ({
+  question,
+  options,
+  answers,
+}: QuestionProps): React.ReactElement => {
   const userAnswers = useSelector((state: RootState) => state.game.userAnswers);
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-
-    if (userAnswers.includes(value)) {
-      const removedAnswers = userAnswers.filter(
-        (answer: string) => answer !== value
-      );
-      dispatch(setUserAnswers(removedAnswers));
-    } else {
-      dispatch(setUserAnswers([...userAnswers, value]));
-    }
-  };
 
   return (
     <>
       <p className="question_title">{question}</p>
       <div className="question">
-        {options.length
-          ? options.map(({ id, value }) => (
-              <Option
-                key={id}
-                id={id}
-                value={value}
-                isChecked={userAnswers.includes(id)}
-                onChange={onChangeHandler}
-              />
-            ))
-          : null}
+        {answers.length > 1 ? (
+          <CheckboxGroup options={options} />
+        ) : (
+          <RadioGroup options={options} />
+        )}
       </div>
     </>
   );

@@ -43,7 +43,7 @@ const Game = (): React.ReactElement => {
 
   useEffect(() => {
     dispatch(setQuestions(apiData));
-  }, [apiData]);
+  }, [dispatch, apiData]);
 
   if (isLoading) return <h2>Loading...</h2>;
 
@@ -77,7 +77,7 @@ const Game = (): React.ReactElement => {
             </h2>
             <h2 className="game_headerScore">Score: {score}</h2>
           </div>
-          <Question question={question} options={options} />
+          <Question question={question} options={options} answers={answers} />
           <div className="game_message">
             {isAnswered && (
               <p

@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
-import { OptionProps } from "./Option.types";
+import { CheckboxProps } from "./Checkbox.types";
 
-import "./Option.scss";
+import "./Checkbox.scss";
 
-const Option = ({
+const Checkbox = ({
   id,
   value,
   isChecked,
   onChange,
-}: OptionProps): React.ReactElement => {
+}: CheckboxProps): React.ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onKeyPressHandler = () => {
@@ -20,7 +20,7 @@ const Option = ({
   return (
     <div>
       <label
-        className="option"
+        className="checkbox"
         htmlFor={id}
         tabIndex={0}
         onKeyPress={onKeyPressHandler}
@@ -36,10 +36,10 @@ const Option = ({
           onChange={onChange}
           tabIndex={-1}
         />
-        <span className="option_checkmark"></span>
+        <span className="checkbox_checkmark"></span>
       </label>
     </div>
   );
 };
 
-export default Option;
+export default Checkbox;
