@@ -43,7 +43,7 @@ const Game = (): React.ReactElement => {
 
   useEffect(() => {
     dispatch(setQuestions(apiData));
-  }, [apiData])
+  }, [apiData]);
 
   if (isLoading) return <h2>Loading...</h2>;
 
@@ -91,14 +91,12 @@ const Game = (): React.ReactElement => {
               </p>
             )}
           </div>
-          <div>
-            <Button
-              label="Confirm"
-              onClick={onClickHandler}
-              isDisabled={isAnswered}
-              color={COLOR.SECONDARY}
-            />
-          </div>
+          <Button
+            label="Confirm"
+            onClick={onClickHandler}
+            isDisabled={isAnswered}
+            color={COLOR.SECONDARY}
+          />
         </>
       </Card>
     </div>
