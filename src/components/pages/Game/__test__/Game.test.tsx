@@ -26,8 +26,6 @@ afterAll(() => server.close());
 
 describe("Game", () => {
   it("should display amount of questions", async () => {
-    // render(withBrowserRouter(<Game />));
-
     const questionAmount = await screen.findByText(/question 1 of 5/i);
 
     expect(questionAmount).toBeInTheDocument();
