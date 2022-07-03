@@ -42,7 +42,7 @@ describe("Question", () => {
     screen.getAllByRole("checkbox");
   });
 
-  it("should render radio buttons when there only 1 answer", () => {
+  it("should render radio buttons when there is only 1 answer", () => {
     render(
       <Question question="test" options={mockOptions} answers={["a"]} />
     );
