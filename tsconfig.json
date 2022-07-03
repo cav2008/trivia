@@ -13,7 +13,7 @@
       "react",
       "react-dom",
       "./types",
-      "jest",
+      "jest"
     ],
     "jsx": "react-jsx",
     "target": "es5",
