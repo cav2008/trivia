@@ -39,7 +39,7 @@ describe("Question", () => {
       <Question question="test" options={mockOptions} answers={["a", "b"]} />
     );
 
-    const checkboxes = screen.getAllByRole("checkbox");
+    screen.getAllByRole("checkbox");
   });
 
   it("should render radio buttons when there only 1 answer", () => {
@@ -47,6 +47,6 @@ describe("Question", () => {
       <Question question="test" options={mockOptions} answers={["a"]} />
     );
 
-    const radios = screen.getAllByRole("radio");
+    screen.getAllByRole("radio");
   });
 });

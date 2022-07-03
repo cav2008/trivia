@@ -68,4 +68,23 @@ describe("Game", () => {
     expect(incorrectMessage).toBeInTheDocument();
     expect(score).toBeInTheDocument();
   });
+
+  it("should show next question", async () => {
+    const question1 = await screen.findByText(
+      "If you have 10 mangos and another person gives you 12 more, how many mangos will you have in total?"
+    );
+    expect(question1).toBeVisible();
+
+    const confirmButton = await screen.findByRole("button", {
+      name: /confirm/i,
+    });
+    userEvent.click(confirmButton);
+
+    const question2 = await screen.findByText(
+      "If a train is supposed to reach the station at 4:10 am. but it is 35 minutes late, at what time will the train reach the station?",
+      undefined,
+      { timeout: 2000 }
+    );
+    expect(question2).toBeInTheDocument();
+  });
 });

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../common/Button";
-import './Home.scss';
+import "./Home.scss";
 
 const Home = (): React.ReactElement => {
   const navigate = useNavigate();
@@ -12,8 +12,12 @@ const Home = (): React.ReactElement => {
       <h1 className="home_title">Trivia Game</h1>
       <p>Welcome to the most amazing Trivia game in the world!!!</p>
       <p>Play now</p>
-      <p className="home_pointer">👇</p>
-      <Button label="Play game" onClick={() => navigate('/game')} />
+      <p className="home_pointer">
+        <span role="img" aria-label="down finger pointer">
+          👇
+        </span>
+      </p>
+      <Button label="Play game" onClick={() => navigate("/game")} />
     </div>
   );
 };

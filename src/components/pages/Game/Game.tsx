@@ -45,6 +45,10 @@ const Game = (): React.ReactElement => {
     dispatch(setQuestions(apiData));
   }, [dispatch, apiData]);
 
+  useEffect(() => {
+    setIsAnswered(false);
+  }, [currentQuestionIndex]);
+
   if (isLoading) return <h2>Loading...</h2>;
 
   const { question, options, answers } = questions[currentQuestionIndex];
@@ -52,7 +56,6 @@ const Game = (): React.ReactElement => {
 
   const onClickHandler = () => {
     setIsAnswered(true);
-
     if (isAnswerCorrect) {
       dispatch(incrementScore());
     }
@@ -60,10 +63,12 @@ const Game = (): React.ReactElement => {
     setTimeout(() => {
       dispatch(resetUserAnswer());
       const isLastQuestion = currentQuestionIndex >= questions.length - 1;
-      isLastQuestion
-        ? navigate("/result")
-        : dispatch(setCurrentQuestionIndex(currentQuestionIndex + 1));
-      setIsAnswered(false);
+
+      if (isLastQuestion) {
+        navigate("/result");
+      } else {
+        dispatch(setCurrentQuestionIndex(currentQuestionIndex + 1));
+      }
     }, 1000);
   };
 
